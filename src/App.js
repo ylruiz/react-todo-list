@@ -8,9 +8,7 @@ function App() {
       <header className="App-header">
         <h1>Render List</h1>
       </header>
-      <body>
-        <div id="root"><TodoList /></div>
-      </body>
+      <TodoList />
     </div>
   );
 }

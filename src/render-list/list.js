@@ -1,5 +1,5 @@
 import React from 'react';
-import '../render-list/list.css';
+import './list.css';
 
 const todos = [
     {
