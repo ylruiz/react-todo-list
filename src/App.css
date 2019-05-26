@@ -10,3 +10,7 @@
   justify-content: center;
   color: white;
 }
+
+.App-list {
+  list-style: none;
+}
