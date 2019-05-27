@@ -20,8 +20,8 @@ const todos = [
 ];
 
 class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       txt: '',
       list: todos
@@ -30,13 +30,14 @@ class App extends React.Component {
     this.keyPressed = this.keyPressed.bind(this);
     this.addElement = this.addElement.bind(this);
   }
-  handleChang( e ){
+  handleChange( e ){
     this.setState({txt: e.target.value});    
   }
   keyPressed( e ){
     if (e.key === "Enter") {
       this.addElement();
     }
+    
   }
   addElement(){
     const element = {
@@ -45,6 +46,7 @@ class App extends React.Component {
       done: false
     };
     this.setState({list: [...this.state.list, element]});
+    console.log(this.state.list);
     this.setState( {txt: ""} );
   }
   render(){
@@ -52,7 +54,6 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Render List</h1>
-          {this.state.txt}
         </header>
         <form>
           <input placeholder="What needs to be done?" 
