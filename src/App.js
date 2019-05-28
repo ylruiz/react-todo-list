@@ -28,28 +28,31 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.keyPressed = this.keyPressed.bind(this);
-    this.addElement = this.addElement.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
   handleChange( e ){
     this.setState({txt: e.target.value});    
   }
   keyPressed( e ){
     if (e.key === "Enter") {
-      this.addElement();
+      this.addItem();
     }
-    
   }
-  addElement(){
-    const element = {
-      id: this.state.list.length,
-      description: this.state.txt,
-      done: false
-    };
-    this.setState({list: [...this.state.list, element]});
-    console.log(this.state.list);
-    this.setState( {txt: ""} );
+  addItem(){
+    const { txt, list } = this.state;
+    if(txt){
+      const element = {
+        id: list.length,
+        description: txt,
+        done: false
+      };
+      const nextState = [...list, element];
+      this.setState({ list: nextState, inputValue: '' });
+      console.log(nextState);
+    }
   }
   render(){
+    const { list, txt } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -57,16 +60,16 @@ class App extends React.Component {
         </header>
         <form>
           <input placeholder="What needs to be done?" 
-                    type="text" 
-                    onChange={this.handleChange}
-                    onKeyPress={this.keyPressed}
-                    value={this.state.txt}>
+                 type="text" 
+                 onChange={this.handleChange}
+                 onKeyPress={this.keyPressed}
+                 value={txt}>
           </input>
-      </form>
-        <ul className="App-list" >
-            {this.state.list.map(item => (
-                <li key="item.id">
-                    <div>{item.description}</div>
+        </form>
+        <ul className="App-list">
+            {list.map(item => (
+                <li key={item.id}>
+                    {item.description}
                 </li>
             ))}
         </ul>
