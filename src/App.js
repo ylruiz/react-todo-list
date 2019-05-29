@@ -19,6 +19,20 @@ const todos = [
   }
 ];
 
+class List extends React.PureComponent {
+  render() {
+    return (
+      <ul className="App-list">
+        {this.props.list.map(item => (
+            <li key={item.id}>
+                {item.description}
+            </li>
+        ))}
+      </ul>
+    )
+  }
+}
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -35,6 +49,7 @@ class App extends React.Component {
   }
   keyPressed( e ){
     if (e.key === "Enter") {
+      e.preventDefault();
       this.addItem();
     }
   }
@@ -42,17 +57,15 @@ class App extends React.Component {
     const { txt, list } = this.state;
     if(txt){
       const element = {
-        id: list.length,
+        id: list.length+1,
         description: txt,
         done: false
       };
       const nextState = [...list, element];
-      this.setState({ list: nextState, inputValue: '' });
-      console.log(nextState);
+      this.setState({ list: nextState, txt: '' });
     }
   }
   render(){
-    const { list, txt } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -63,16 +76,10 @@ class App extends React.Component {
                  type="text" 
                  onChange={this.handleChange}
                  onKeyPress={this.keyPressed}
-                 value={txt}>
+                 value={this.state.txt}>
           </input>
         </form>
-        <ul className="App-list">
-            {list.map(item => (
-                <li key={item.id}>
-                    {item.description}
-                </li>
-            ))}
-        </ul>
+        <List list={this.state.list}/>
       </div>
     )
   }
