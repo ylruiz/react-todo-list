@@ -1,19 +1,15 @@
 import React from 'react';
+import TodoItem from './TodoItem';
 
-class List extends React.PureComponent {
+class List extends React.Component {
     render() {
-      return (
-        <ul className="todos">
-          {this.props.list.map(item => (
-              <li key={item.id}> 
-                  <label className='todo todo--completed'>
-                    <input type="checkbox" />
-                    {item.description}
-                  </label>
-              </li>
-          ))}
-        </ul>
-      )
+        return (
+            <ul className="todos">
+                {this.props.list.map(item => (
+                    <TodoItem item = {item} />
+                ))}
+            </ul>
+        )
     }
   }
 
