@@ -33,52 +33,60 @@ class List extends React.PureComponent {
   }
 }
 
+class NewTodo extends React.Component {
+  state = {txt: ''}
+
+  handleChange = ( event ) => {
+    this.setState({txt: event.target.value});    
+  }
+
+  handleSubmit = ( event ) => {
+    event.preventDefault();
+    if (this.state.txt) {
+      this.props.onAddTodo(this.state.txt);
+    }
+    this.setState({txt: ''});
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+          <input placeholder="What needs to be done?" 
+                 type="text" 
+                 onChange={this.handleChange}
+                 value={this.state.txt}>
+          </input>
+      </form>
+    )
+  }
+}
+
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      txt: '',
       list: todos
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.keyPressed = this.keyPressed.bind(this);
-    this.addItem = this.addItem.bind(this);
-  }
-  handleChange( e ){
-    this.setState({txt: e.target.value});    
-  }
-  keyPressed( e ){
-    if (e.key === "Enter") {
-      e.preventDefault();
-      this.addItem();
     }
   }
-  addItem(){
-    const { txt, list } = this.state;
-    if(txt){
-      const element = {
+
+  addItem = (txt) => {
+    const { list } = this.state;
+    const element = {
         id: list.length+1,
         description: txt,
         done: false
-      };
-      const nextState = [...list, element];
-      this.setState({ list: nextState, txt: '' });
     }
+    const nextState = [...list, element];
+    this.setState({ list: nextState });
   }
+
   render(){
     return (
       <div className="App">
         <header className="App-header">
           <h1>Render List</h1>
         </header>
-        <form>
-          <input placeholder="What needs to be done?" 
-                 type="text" 
-                 onChange={this.handleChange}
-                 onKeyPress={this.keyPressed}
-                 value={this.state.txt}>
-          </input>
-        </form>
+        <NewTodo onAddTodo={this.addItem}/>
         <List list={this.state.list}/>
       </div>
     )
