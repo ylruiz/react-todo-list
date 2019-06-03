@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import List from './List';
+import NewTodo from './NewTodo';
 
 const todos = [
   {
@@ -18,48 +20,6 @@ const todos = [
       done: true
   }
 ];
-
-class List extends React.PureComponent {
-  render() {
-    return (
-      <ul className="App-list">
-        {this.props.list.map(item => (
-            <li key={item.id}>
-                {item.description}
-            </li>
-        ))}
-      </ul>
-    )
-  }
-}
-
-class NewTodo extends React.Component {
-  state = {txt: ''}
-
-  handleChange = ( event ) => {
-    this.setState({txt: event.target.value});    
-  }
-
-  handleSubmit = ( event ) => {
-    event.preventDefault();
-    if (this.state.txt) {
-      this.props.onAddTodo(this.state.txt);
-    }
-    this.setState({txt: ''});
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-          <input placeholder="What needs to be done?" 
-                 type="text" 
-                 onChange={this.handleChange}
-                 value={this.state.txt}>
-          </input>
-      </form>
-    )
-  }
-}
 
 class App extends React.Component {
   constructor(props){
