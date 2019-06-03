@@ -40,16 +40,6 @@ class App extends React.Component {
     this.setState({ list: nextState });
   }
 
-  handleChangeItem = (id, isChecked) => {
-    const { list } = this.state;
-    list.forEach(item => {
-      if (item.id === id) {
-        item.done = isChecked;
-      }
-    })
-    this.setState({list: list});
-  }
-
   render(){
     return (
       <div className="App">
@@ -57,7 +47,7 @@ class App extends React.Component {
           <h1>Render List</h1>
         </header>
         <NewTodo onAddTodo={this.addItem} />
-        <List list={this.state.list} onChangeItem={this.handleChangeItem} />
+        <List list={this.state.list} />
       </div>
     )
   }
