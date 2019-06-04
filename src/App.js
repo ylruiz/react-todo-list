@@ -59,7 +59,8 @@ class App extends React.Component {
   }
 
   deleteTodo = (list) => {
-    console.log('Delete Todo');
+    list.splice(0, list.length);
+    this.handleChange(list);
   }
 
   render(){
