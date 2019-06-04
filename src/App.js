@@ -32,8 +32,6 @@ class App extends React.Component {
   }
 
   handleChange = (list) => {
-    console.log('the list in App.js when I add items');
-    console.log(list);
     this.setState({ list: list });
   }
 
@@ -67,7 +65,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Render List</h1>
+          <h1>Todo List</h1>
         </header>
         <NewTodo onAddTodo={this.addItem} />
         <CheckBox onChecked={this.checkTodo}/>

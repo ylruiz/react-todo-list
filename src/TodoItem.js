@@ -22,7 +22,7 @@ class TodoItem extends React.Component {
                 <label className={item.done ? 'todo--completed' : 'todo'}>
                     <input type="checkbox" checked={item.done} onChange={this.handleChange}/>
                     {item.description}
-                    <button onClick={this.deleteItem}>X</button>
+                    <button onClick={this.deleteItem}> X </button>
                 </label>
             </li>
         )
