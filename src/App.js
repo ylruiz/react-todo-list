@@ -29,6 +29,12 @@ class App extends React.Component {
     }
   }
 
+  handleChange = (list) => {
+    console.log('the list in App.js');
+    console.log(list);
+    this.setState({ list: list });
+  }
+
   addItem = (txt) => {
     const { list } = this.state;
     const element = {
@@ -47,7 +53,7 @@ class App extends React.Component {
           <h1>Render List</h1>
         </header>
         <NewTodo onAddTodo={this.addItem} />
-        <List list={this.state.list} />
+        <List list={this.state.list} onChange={this.handleChange}/>
       </div>
     )
   }
