@@ -30,15 +30,19 @@ class App extends React.Component {
   }
 
   handleChange = (list) => {
-    console.log('the list in App.js');
+    console.log('the list in App.js when I add items');
     console.log(list);
     this.setState({ list: list });
   }
 
   addItem = (txt) => {
     const { list } = this.state;
+    let id = 0;
+    if(list.length > 0 ) {
+      id = list[list.length-1].id;
+    }
     const element = {
-        id: list.length+1,
+        id: id+1,
         description: txt,
         done: false
     }

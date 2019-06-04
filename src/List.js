@@ -5,13 +5,13 @@ class List extends React.Component {
     state = {list: this.props.list}
 
     deleteItem = (item) => {
-        const { list } = this.state;
-        const index = list.map(x => {
+        const tempList = this.props.list;
+        const index = tempList.map(x => {
             return x.id;
         }).indexOf(item.id);
-        list.splice(index, 1);
-        this.setState({ list: list });
-        this.props.onChange(this.state.list);  
+        tempList.splice(index, 1);
+        this.setState({ list: tempList });
+        this.props.onChange(tempList);  
     }
 
     render() {
