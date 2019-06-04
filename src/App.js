@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import List from './List';
 import NewTodo from './NewTodo';
+import CheckBox from './CheckBox';
+import Button from './Button';
 
 const todos = [
   {
@@ -50,6 +52,16 @@ class App extends React.Component {
     this.handleChange(nextState);
   }
 
+  checkTodo = (isChecked) => {
+    const { list } = this.state;
+    isChecked ? list.map(item => item.done = true) : list.map(item => item.done = false);
+    this.handleChange(list);
+  }
+
+  deleteTodo = (list) => {
+    console.log('Delete Todo');
+  }
+
   render(){
     return (
       <div className="App">
@@ -57,6 +69,8 @@ class App extends React.Component {
           <h1>Render List</h1>
         </header>
         <NewTodo onAddTodo={this.addItem} />
+        <CheckBox onChecked={this.checkTodo}/>
+        <Button list={this.state.list} onDelete={this.deleteTodo}/>
         <List list={this.state.list} onChange={this.handleChange}/>
       </div>
     )
