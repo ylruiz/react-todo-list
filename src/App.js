@@ -43,7 +43,7 @@ class App extends React.Component {
         done: false
     }
     const nextState = [...list, element];
-    this.setState({ list: nextState });
+    this.handleChange(nextState);
   }
 
   render(){
