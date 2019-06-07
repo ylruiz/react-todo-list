@@ -61,16 +61,51 @@ class App extends React.Component {
     this.handleChange(list);
   }
 
+  showAll = (list) => {
+    console.log('Show All');
+    console.log(list);
+  }
+
+  showActive = (list) => {
+    console.log('Show Active');
+    console.log(list);
+  }
+
+  showCompleted = (list) => {
+    console.log('Show Completed');
+    console.log(list);
+  }
+
   render(){
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className='App'>
+        <header className='App-header'>
           <h1>Todo List</h1>
+          <NewTodo onAddTodo={this.addItem} />
         </header>
-        <NewTodo onAddTodo={this.addItem} />
-        <CheckBox onChecked={this.checkTodo}/>
-        <Button list={this.state.list} onDelete={this.deleteTodo}/>
-        <List list={this.state.list} onChange={this.handleChange}/>
+        <section className='main'>
+          <CheckBox onChecked={this.checkTodo}/>
+          <List list={this.state.list} onChange={this.handleChange}/>
+        </section>
+        <footer className='footer'>
+          <span className='todo-count'>
+            <strong>1</strong>
+            <span>item</span>
+            <span> left</span>
+          </span>
+          <ul className='filters'>
+            <li>
+              <Button list={this.state.list} label='All' onShowAll={this.showAll}/>
+            </li>
+            <li>
+              <Button list={this.state.list} label='Active' onShowActive={this.showActive}/>
+            </li>
+            <li>
+              <Button list={this.state.list} label='Completed' onShowCompleted={this.showCompleted}/>
+            </li>
+          </ul>       
+          <Button list={this.state.list} label='Clear completed' onDelete={this.deleteTodo}/>
+        </footer>
       </div>
     )
   }
