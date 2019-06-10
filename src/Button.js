@@ -40,10 +40,28 @@ class Button extends React.Component {
         }
     }
 
+    classNameLabel = (label) => {
+        switch(label){
+            case 'Clear completed': {
+                return 'delete-all';
+            }
+            case 'All': {
+                return 'all';
+            }
+            case 'Active': {
+                 return 'active';
+            }
+            case 'Completed': {
+                return 'completed';
+            }
+            default: console.log(this.props.label);
+        }
+    }
+
     render() {
         const label = this.props.label;
         return (
-            <button onClick={this.onClickLabel(label)}> {label} </button>
+            <button className={this.classNameLabel(label)} onClick={this.onClickLabel(label)}> {label} </button>
         )
     }
   }
