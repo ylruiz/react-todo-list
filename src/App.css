@@ -64,7 +64,7 @@ body {
   position: relative;
   font-size: 24px;
   border-bottom: 1px solid #ededed;
-  padding: 12px 3px 5px;
+  padding: 12px 3px 10px;
 }
 
 .todos li .delete {
@@ -72,7 +72,8 @@ body {
   color: #cc9a9a;
   border-style: none;
   background-color: white; 
-  cursor: pointer
+  cursor: pointer;
+  padding-top: 5px;
 }
 
 .todo, 
