@@ -1,10 +1,15 @@
 import React from 'react';
 
 class Button extends React.Component {
-   
+
     deleteTodo = (event) => {
         event.preventDefault();
-        this.props.onDelete(this.props.list); 
+        this.props.onDeleteTodo(this.props.list); 
+    }
+    
+    deleteCompleted = (event) => {
+        event.preventDefault();
+        this.props.onDeleteCompleted(this.props.list); 
     }
 
     showAll = (event) => {
@@ -24,8 +29,11 @@ class Button extends React.Component {
 
     onClickLabel = (label) => {
         switch(label){
-            case 'Clear completed': {
+            case 'X': {
                 return this.deleteTodo;
+            }
+            case 'Clear completed': {
+                return this.deleteCompleted;
             }
             case 'All': {
                 return this.showAll;
@@ -42,8 +50,11 @@ class Button extends React.Component {
 
     classNameLabel = (label) => {
         switch(label){
-            case 'Clear completed': {
+            case 'X': {
                 return 'delete-all';
+            }
+            case 'Clear completed': {
+                return 'delete-completed';
             }
             case 'All': {
                 return 'all';

@@ -61,6 +61,10 @@ class App extends React.Component {
     this.handleChange(list);
   }
 
+  deleteCompleted = (list) => {
+    console.log('delete completed');
+  }
+
   showAll = (list) => {
     console.log('Show All');
     console.log(list);
@@ -81,7 +85,8 @@ class App extends React.Component {
       <div className='App'>
         <header className='App-header'>
           <h1>Todo List</h1>
-          <NewTodo onAddTodo={this.addItem} />
+          <NewTodo onAddTodo={this.addItem}/>
+          <Button list={this.state.list} label='X' onDeleteTodo={this.deleteTodo}/>
         </header>
         <section className='main'>
           <CheckBox onChecked={this.checkTodo}/>
@@ -104,7 +109,7 @@ class App extends React.Component {
               <Button list={this.state.list} label='Completed' onShowCompleted={this.showCompleted}/>
             </li>
           </ul>       
-          <Button list={this.state.list} label='Clear completed' onDelete={this.deleteTodo}/>
+          <Button list={this.state.list} label='Clear completed' onDeleteCompleted={this.deleteCompleted}/>
         </footer>
       </div>
     )

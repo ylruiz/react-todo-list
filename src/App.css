@@ -67,13 +67,23 @@ body {
   padding: 12px 3px 10px;
 }
 
-.todos li .delete {
+.todos li .delete, 
+.delete-all {
   float: right;
   color: #cc9a9a;
   border-style: none;
   background-color: white; 
   cursor: pointer;
+}
+
+.todos li .delete {
   padding-top: 5px;
+}
+
+.delete-all {
+  position: absolute;
+  right: 2px;
+  top: 22px;
 }
 
 .todo, 
@@ -178,7 +188,7 @@ footer button {
   border-color: rgba(175, 47, 47, 0.2);
 }
 
-.delete-all {
+.delete-completed {
   float: right;
   position: relative;
   text-decoration: none;

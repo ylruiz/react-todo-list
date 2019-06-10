@@ -14,7 +14,7 @@ class NewTodo extends React.Component {
       }
       this.setState({txt: ''});
     }
-  
+
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
