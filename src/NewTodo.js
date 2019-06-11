@@ -14,7 +14,7 @@ class NewTodo extends React.Component {
       }
       this.setState({txt: ''});
     }
-  
+
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
@@ -28,4 +28,4 @@ class NewTodo extends React.Component {
     }
   }
 
-export default NewTodo;  
+export default NewTodo; 

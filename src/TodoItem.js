@@ -19,14 +19,15 @@ class TodoItem extends React.Component {
         const item = this.state.item;
         return (
             <li> 
-                <label className={item.done ? 'todo--completed' : 'todo'}>
-                    <input type="checkbox" checked={item.done} onChange={this.handleChange}/>
-                    {item.description}
-                    <button onClick={this.deleteItem}> X </button>
+                <label className={item.done ? 'container todo--completed' : 'container todo'}>
+                    <input className='input-item' type='checkbox' checked={item.done} onChange={this.handleChange}/>
+                    <span className="checkmark"></span>
+                    <label className='label-desc'>{item.description}</label>
+                    <button className='delete' onClick={this.deleteItem}> X </button>
                 </label>
             </li>
         )
     }
   }
 
-export default TodoItem;  
+export default TodoItem; 
