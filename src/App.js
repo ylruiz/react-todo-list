@@ -73,12 +73,14 @@ class App extends React.Component {
 
   showActive = (list) => {
     console.log('Show Active');
-    console.log(list);
+    const listTemp = list.filter(item => !item.done);
+    console.log(listTemp);
   }
 
   showCompleted = (list) => {
     console.log('Show Completed');
-    console.log(list);
+    const listTemp = list.filter(item => item.done);
+    console.log(listTemp);
   }
 
   render(){
