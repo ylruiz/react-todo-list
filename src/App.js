@@ -62,7 +62,8 @@ class App extends React.Component {
   }
 
   deleteCompleted = (list) => {
-    console.log('delete completed');
+    const listTemp = list.filter(item => !item.done);
+    this.handleChange(listTemp);
   }
 
   showAll = (list) => {
