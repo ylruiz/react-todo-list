@@ -2,16 +2,12 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 class List extends React.Component {
-    state = {list: this.props.list}
 
     deleteItem = (item) => {
-        const tempList = this.props.list;
-        const index = tempList.map(x => {
-            return x.id;
-        }).indexOf(item.id);
-        tempList.splice(index, 1);
-        this.setState({ list: tempList });
-        this.props.onChange(tempList);  
+        const list = this.props.list;
+        const index = list.indexOf(item);
+        list.splice(index, 1);
+        this.props.onChange(list);  
     }
 
     render() {
