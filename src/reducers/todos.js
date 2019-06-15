@@ -5,17 +5,19 @@ import {
     COMPLETE_TODO,
     COMPLETE_ALL_TODOS,
     CLEAR_COMPLETED
-} from '../constants/ActionTypes'
+} from '../constants/actionTypes'
 
-export default function todos(state, action) {
+let newId = 0
+
+const todo = (state, action) => {
     switch (action.type) {
       case ADD_TODO:
         return [
           ...state,
           {
-            id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-            completed: false,
-            text: action.text
+            id: newId++,
+            description: action.text,
+            done: false,
           }
         ]
   
@@ -48,4 +50,6 @@ export default function todos(state, action) {
         return state
     }
 }
+
+export default todo
   

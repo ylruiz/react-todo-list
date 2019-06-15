@@ -159,6 +159,7 @@ body {
 }
 
 .footer {
+  position: relative;
   color: #777;
   padding: 10px 15px;
   height: 20px;
@@ -171,7 +172,7 @@ body {
   text-align: left;
 }
 
-footer button {
+.footer .button {
   border: none;
   background: none;
   color: #777;
@@ -188,7 +189,7 @@ footer button {
   border-color: rgba(175, 47, 47, 0.2);
 }
 
-.delete-completed {
+.clear-completed {
   float: right;
   position: relative;
   text-decoration: none;

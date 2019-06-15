@@ -1,122 +1,46 @@
-import React from 'react';
-import './App.css';
-import List from './List';
-import NewTodo from './NewTodo';
-import CheckBox from './CheckBox';
-import Button from './Button';
+import React, { useReducer }from 'react'
+import './App.css'
+import todo from './reducers/todos'
+import * as actions from './actions/todos'
+import initialState from './constants/initialState'
+import Header from './components/Header'
+import MainSection from './components/MainSection'
+import Footer from './components/Footer'
 
-const todos = [
-  {
-      id: 1,
-      description: "Learn React",
-      done: false
-  },
-  {
-      id: 2,
-      description: "Learn JS",
-      done: false
-  },
-  {
-      id: 3,
-      description: "Learn how to use Gitub",
-      done: true
-  }
-];
+const App = () => {
+  
+  const [todos, dispatch] = useReducer(
+    todo,
+    initialState
+  )
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      list: todos
-    }
+  /* 
+   * HEADER ACTIONS 
+   */
+  const addTodo = text => {
+    dispatch(actions.addTodo(text));
   }
 
-  handleChange = (list) => {
-    this.setState({ list: list });
+  const deleteAllTodos = () => {
+    dispatch(actions.deleteAllTodos)
   }
 
-  addItem = (txt) => {
-    const { list } = this.state;
-    let id = 0;
-    if(list.length > 0 ) {
-      id = list[list.length-1].id;
-    }
-    const element = {
-        id: id+1,
-        description: txt,
-        done: false
-    }
-    const nextState = [...list, element];
-    this.handleChange(nextState);
+  const incompletedTodos = todos.filter(todo => !todo.done)
+
+  /*
+   * MAIN_SECTION ACTIONS
+   */
+  const completeTodo = todo => {
+    dispatch(actions.completeTodo(todo.id));
   }
 
-  checkTodo = (isChecked) => {
-    const { list } = this.state;
-    isChecked ? list.map(item => item.done = true) : list.map(item => item.done = false);
-    this.handleChange(list);
-  }
-
-  deleteTodo = (list) => {
-    list.splice(0, list.length);
-    this.handleChange(list);
-  }
-
-  deleteCompleted = (list) => {
-    const listTemp = list.filter(item => !item.done);
-    this.handleChange(listTemp);
-  }
-
-  showAll = (list) => {
-    console.log('Show All');
-    console.log(list);
-  }
-
-  showActive = (list) => {
-    console.log('Show Active');
-    const listTemp = list.filter(item => !item.done);
-    console.log(listTemp);
-  }
-
-  showCompleted = (list) => {
-    console.log('Show Completed');
-    const listTemp = list.filter(item => item.done);
-    console.log(listTemp);
-  }
-
-  render(){
-    return (
-      <div className='App'>
-        <header className='App-header'>
-          <h1>Todo List</h1>
-          <NewTodo onAddTodo={this.addItem}/>
-          <Button list={this.state.list} label='X' onDeleteTodo={this.deleteTodo}/>
-        </header>
-        <section className='main'>
-          <CheckBox onChecked={this.checkTodo}/>
-          <List list={this.state.list} onChange={this.handleChange}/>
-        </section>
-        <footer className='footer'>
-          <span className='todo-count'>
-            <strong>1</strong>
-            <span>item</span>
-            <span> left</span>
-          </span>
-          <ul className='filters'>
-            <li>
-              <Button list={this.state.list} label='All' onShowAll={this.showAll}/>
-            </li>
-            <li>
-              <Button list={this.state.list} label='Active' onShowActive={this.showActive}/>
-            </li>
-            <li>
-              <Button list={this.state.list} label='Completed' onShowCompleted={this.showCompleted}/>
-            </li>
-          </ul>       
-          <Button list={this.state.list} label='Clear completed' onDeleteCompleted={this.deleteCompleted}/>
-        </footer>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Header onAddTodo={addTodo} onDeleteAllTodos={deleteAllTodos}/>
+      <MainSection list={todos} onCompleteTodo={completeTodo}/>
+      <Footer count={incompletedTodos.length} />
+    </div>
+  )
 }
 
 export default App;
