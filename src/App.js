@@ -25,7 +25,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div class='App'>
       <Header onAddTodo={addTodo} />
       <MainSection list={todos} onToggleTodo={toggleTodo}/>
     </div>
