@@ -1,5 +1,6 @@
 import {
-    ADD_TODO
+    ADD_TODO, 
+    TOGGLE_TODO
 } from '../constants/actionTypes'
 
 let newId = 0
@@ -15,6 +16,13 @@ const todo = (state, action) => {
                     done: false
                 }
             ]
+        
+        case TOGGLE_TODO: 
+            return state.map(todo =>
+                todo.id === action.id ? 
+                { ...todo, done: !todo.done } :
+                todo
+            )    
             
         default:
             return state
