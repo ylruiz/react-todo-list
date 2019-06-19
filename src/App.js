@@ -21,7 +21,7 @@ const App = () => {
    * MAIN_SECTION ACTIONS
    */
   const toggleTodo = todo => {
-    dispatch(actions.toggleTodo(todo.id));
+    dispatch(actions.toggleTodo(todo.id))
   }
 
   return (
