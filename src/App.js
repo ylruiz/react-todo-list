@@ -1,16 +1,28 @@
-import React from 'react';
-import './App.css';
-import TodoList from './render-list/list.js';
+import React, { useReducer } from 'react'
+import './App.css'
+import todo from './reducers/todos'
+import * as actions from './actions/todos'
+import Header from './components/Header'
+import MainSection from './components/MainSection'
 
-function App() {
+const App = () => {
+  const initialState = []
+  const [todos, dispatch] = useReducer (
+    todo,
+    initialState
+  )
+
+  /* HEADER ACTIONS */
+  const addTodo = text => {
+    dispatch(actions.addTodo(text))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Render List</h1>
-      </header>
-      <TodoList />
+    <div>
+      <Header onAddTodo={addTodo} />
+      <MainSection list={todos} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
