@@ -3,9 +3,7 @@ import '../styles/MainSection.css'
 
 const MainSection = (props) => {
 
-    const toggleTodo = item => {
-        props.onToggleTodo(item)
-    }
+    const toggleTodo = item => props.onToggleTodo(item)
 
     return (
         <section>
