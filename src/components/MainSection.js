@@ -3,10 +3,6 @@ import '../styles/MainSection.css'
 
 const MainSection = (props) => {
 
-    const isCompleted = item => {
-        return item.done ? 'todo-completed' : 'todo'
-    }
-
     const toggleTodo = item => {
         props.onToggleTodo(item)
     }
@@ -15,7 +11,7 @@ const MainSection = (props) => {
         <section>
             <ul>
                 {props.list.map(item => (
-                    <label className={isCompleted(item)}>
+                    <label className={item.done ? 'todo-completed' : 'todo'}>
                         <input 
                             type="checkbox"
                             checked={item.done}
