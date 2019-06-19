@@ -10,11 +10,10 @@ const Header = (props) => {
     }
 
     return(
-        <header className='header'>
+        <header>
             <h1> Todo List </h1>
             <form onSubmit={handleSubmit}>
                 <input
-                    className='new-todo'
                     placeholder="What needs to be done?" 
                     type="text" 
                     ref={node => input = node}/>
