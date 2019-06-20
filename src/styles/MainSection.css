@@ -63,3 +63,12 @@
 .label-desc {
     padding-left: 24px;
 }
+
+.delete {
+  float: right;
+  color: #cc9a9a;
+  border-style: none;
+  background-color: white; 
+  cursor: pointer;
+  margin-top: 4px;
+}
