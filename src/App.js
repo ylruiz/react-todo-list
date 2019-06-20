@@ -17,10 +17,17 @@ const App = () => {
     dispatch(actions.addTodo(text))
   }
 
+  /*
+   * MAIN_SECTION ACTIONS
+   */
+  const toggleTodo = todo => {
+    dispatch(actions.toggleTodo(todo.id))
+  }
+
   return (
     <div>
       <Header onAddTodo={addTodo} />
-      <MainSection list={todos} />
+      <MainSection list={todos} onToggleTodo={toggleTodo}/>
     </div>
   )
 }
