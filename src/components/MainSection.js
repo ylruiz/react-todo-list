@@ -5,6 +5,8 @@ const MainSection = (props) => {
 
     const toggleTodo = item => props.onToggleTodo(item)
 
+    const deleteTodo = item => props.onDeleteTodo(item)
+
     return (
         <section class='main-section'>
             <ul className='todos'>
@@ -18,11 +20,12 @@ const MainSection = (props) => {
                                     type="checkbox"
                                     checked={item.done}
                                     onChange={ () => toggleTodo(item) } />
-                                <span className="checkmark"></span>       
+                                <span className="checkmark"></span>      
                                 <label for={'toggle' + item.id} className='label-desc'>
                                     {item.description}
                                 </label>
                             </label> 
+                            <button className='delete' onClick={ () => deleteTodo(item) }> X </button>
                         </div>
                      </li>                 
                 ))}

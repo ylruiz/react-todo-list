@@ -24,10 +24,14 @@ const App = () => {
     dispatch(actions.toggleTodo(todo.id))
   }
 
+  const deleteTodo = todo => {
+    dispatch(actions.deleteTodo(todo.id))
+  }
+
   return (
     <div class='App'>
       <Header onAddTodo={addTodo} />
-      <MainSection list={todos} onToggleTodo={toggleTodo}/>
+      <MainSection list={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
     </div>
   )
 }

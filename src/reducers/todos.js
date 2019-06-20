@@ -1,6 +1,7 @@
 import {
     ADD_TODO, 
-    TOGGLE_TODO
+    TOGGLE_TODO,
+    DELETE_TODO
 } from '../constants/actionTypes'
 
 let newId = 0
@@ -22,7 +23,12 @@ const todo = (state, action) => {
                 todo.id === action.id ? 
                 { ...todo, done: !todo.done } :
                 todo
-            )    
+            )   
+        
+        case DELETE_TODO:
+            return state.filter(todo =>
+                todo.id !== action.id
+            )
             
         default:
             return state
