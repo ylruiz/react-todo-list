@@ -4,6 +4,7 @@ import todo from './reducers/todos'
 import * as actions from './actions/todos'
 import Header from './components/Header'
 import MainSection from './components/MainSection'
+import Footer from './components/Footer';
 
 const App = () => {
   const initialState = []
@@ -36,6 +37,7 @@ const App = () => {
     <div class='App'>
       <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
       <MainSection list={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
+      <Footer />
     </div>
   )
 }
