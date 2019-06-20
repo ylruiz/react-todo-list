@@ -17,9 +17,3 @@ export const deleteTodo = id => ({
 export const toggleTodos = () => ({ 
     type: types.TOGGLE_TODOS
 })
-
-export const editTodo = (id, text) => ({
-    type: types.EDIT_TODO, 
-    id, 
-    text
-})
