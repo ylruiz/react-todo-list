@@ -1,11 +1,14 @@
 import React from 'react'
 import '../styles/Footer.css'
 
-const Footer = () => {
+const Footer = (props) => {
+
+    const count = props.count
+
     return (
         <footer className='footer'>
             <span className='todo-count'>
-                <strong> 1 </strong>
+                <strong> {count} </strong>
                 <span>item</span>
                 <span> left</span>
             </span>
