@@ -36,11 +36,15 @@ const App = () => {
   /* FOOTER ACTIONS */
   const incompletedTodos = todos.filter(todo => !todo.done)
 
+  const clearCompleted = () => {
+    dispatch(actions.clearCompleted())
+  }
+
   return (
     <div class='App'>
       <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
       <MainSection list={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
-      <Footer count={incompletedTodos.length}/>
+      <Footer count={incompletedTodos.length} onClearCompleted={clearCompleted}/>
     </div>
   )
 }

@@ -5,6 +5,8 @@ const Footer = (props) => {
 
     const count = props.count
 
+    const clearCompleted = () => props.onClearCompleted() 
+
     return (
         <footer className='footer'>
             <span className='todo-count'>
@@ -23,7 +25,9 @@ const Footer = (props) => {
                     <button className='button filter'> Completed </button>
                 </li>
             </ul> 
-            <button className='button clear-completed'> Clear completed </button>      
+            <button className='button clear-completed' onClick={ () => clearCompleted() }> 
+                Clear completed 
+            </button>      
         </footer>
     )
 }
