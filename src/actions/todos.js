@@ -13,3 +13,4 @@ export const deleteTodo = id => ({
     type: types.DELETE_TODO, 
     id
 })
+
