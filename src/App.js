@@ -17,6 +17,10 @@ const App = () => {
     dispatch(actions.addTodo(text))
   }
 
+  const toggleTodos = () => {
+    dispatch(actions.toggleTodos())
+  }
+
   /*
    * MAIN_SECTION ACTIONS
    */
@@ -30,7 +34,7 @@ const App = () => {
 
   return (
     <div class='App'>
-      <Header onAddTodo={addTodo} />
+      <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
       <MainSection list={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
     </div>
   )

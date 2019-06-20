@@ -10,16 +10,26 @@ const Header = (props) => {
       input.value = ''
     }
 
+    const toggleTodos = () => props.onToggleTodos()
+
     return(
         <header className='header'>
             <h1> Todo List </h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    className='new-todo'
-                    placeholder="What needs to be done?" 
-                    type="text" 
-                    ref={node => input = node}/>
-            </form>
+            <div className='container-header'>
+                <input 
+                    id='toggle-todos'
+                    className='toggle-todos'
+                    type="checkbox"
+                    onChange={ () => toggleTodos() } />
+                <label for='toggle-todos'></label>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        className='new-todo'
+                        placeholder="What needs to be done?" 
+                        type="text" 
+                        ref={node => input = node}/>
+                </form>
+            </div>
         </header>
     )
 }
