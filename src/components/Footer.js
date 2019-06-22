@@ -11,7 +11,7 @@ const Footer = (props) => {
         <footer className='footer'>
             <span className='todo-count'>
                 <strong> {count} </strong>
-                <span>item</span>
+                <span>{(count > 1) ? 'items' : 'item'}</span>
                 <span> left</span>
             </span>
             <ul className='filters'>
