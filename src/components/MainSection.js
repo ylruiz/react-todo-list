@@ -7,10 +7,30 @@ const MainSection = (props) => {
 
     const deleteTodo = item => props.onDeleteTodo(item)
 
+    const getVisibleFilter = (todos, filter) => {
+        switch (filter) {
+            case 'SHOW_ALL':
+                return todos
+        
+            case 'SHOW_ACTIVE':
+                return todos.filter(todo => !todo.completed)
+
+            case 'SHOW_COMPLETED':
+                return todos.filter(todo => todo.completed)
+        
+            default:
+                throw new Error('Unknown filter: ' + filter)
+        }
+    }
+
+    const list = getVisibleFilter(props.list, props.filter)
+    
+    console.log(list)
+
     return (
         <section class='main-section'>
             <ul className='todos'>
-                {props.list.map(item => (
+                {list.map(item => (
                     <li key={item.id}>
                         <div className='container'>
                             <label className={item.done ? 'todo-completed' : 'todo'}>

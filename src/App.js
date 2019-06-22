@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import './App.css'
 import todo from './reducers/todos'
+import {visibilityFilter} from './reducers/filters'
 import * as actions from './actions/todos'
 import Header from './components/Header'
 import MainSection from './components/MainSection'
@@ -11,6 +12,12 @@ const App = () => {
   const [todos, dispatch] = useReducer (
     todo,
     initialState
+  )
+
+  const initialFilter = 'SHOW_ALL'
+  const [filter, setFilter] = useReducer (
+      visibilityFilter,
+      initialFilter
   )
 
   /* HEADER ACTIONS */
@@ -40,11 +47,17 @@ const App = () => {
     dispatch(actions.clearCompleted())
   }
 
+  const setVisibilityFilter = (newFilter) => {
+    setFilter(actions.setVisibilityFilter(newFilter))
+  }
+
   return (
     <div class='App'>
       <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
-      <MainSection list={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
-      <Footer count={incompletedTodos.length} onClearCompleted={clearCompleted}/>
+      <MainSection list={todos} filter={filter} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
+      <Footer count={incompletedTodos.length} 
+              onClearCompleted={clearCompleted} 
+              onFilter={setVisibilityFilter}/>
     </div>
   )
 }

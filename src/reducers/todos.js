@@ -41,7 +41,7 @@ const todo = (state, action) => {
 
         case CLEAR_COMPLETED:
             return state.filter(todo => todo.done === false)    
-
+            
         default:
             return state
     }
