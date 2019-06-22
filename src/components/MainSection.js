@@ -13,10 +13,10 @@ const MainSection = (props) => {
                 return todos
         
             case 'SHOW_ACTIVE':
-                return todos.filter(todo => !todo.completed)
+                return todos.filter(todo => !todo.done)
 
             case 'SHOW_COMPLETED':
-                return todos.filter(todo => todo.completed)
+                return todos.filter(todo => todo.done)
         
             default:
                 throw new Error('Unknown filter: ' + filter)
@@ -24,8 +24,6 @@ const MainSection = (props) => {
     }
 
     const list = getVisibleFilter(props.list, props.filter)
-    
-    console.log(list)
 
     return (
         <section class='main-section'>

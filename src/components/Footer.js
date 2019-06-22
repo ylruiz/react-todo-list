@@ -22,13 +22,13 @@ const Footer = (props) => {
             </span>
             <ul className='filters'>
                 <li>
-                    <button className='button filter' onClick={ () => showAll() }> All </button>
+                    <a href='#/' className={(props.filter==='SHOW_ALL') ? 'button selected': 'button unselected'} onClick={ () => showAll() }> All </a>
                 </li>
                 <li>
-                    <button className='button filter' onClick={ () => showActive() }> Active </button>
+                    <a href='#/' className={(props.filter==='SHOW_ACTIVE') ? 'button selected': 'button unselected'} onClick={ () => showActive() }> Active </a>
                 </li>
                 <li>
-                    <button className='button filter' onClick={ () => showCompleted() }> Completed </button>
+                    <a href='#/' className={(props.filter==='SHOW_COMPLETED') ? 'button selected': 'button unselected'} onClick={ () => showCompleted() }> Completed </a>
                 </li>
             </ul> 
             <button className='button clear-completed' onClick={ () => clearCompleted() }> 

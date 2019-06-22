@@ -28,9 +28,3 @@ export const setVisibilityFilter = filter => ({
     type: types.SET_VISIBILITY_FILTER,
     filter
 })
-
-export const VisibilityFilters = {
-    SHOW_ALL: types.SHOW_ALL,
-    SHOW_ACTIVE: types.SHOW_ACTIVE,
-    SHOW_COMPLETED: types.SHOW_COMPLETED
-}

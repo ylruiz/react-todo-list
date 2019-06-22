@@ -9,15 +9,16 @@ import Footer from './components/Footer';
 
 const App = () => {
   const initialState = []
-  const [todos, dispatch] = useReducer (
-    todo,
-    initialState
-  )
-
   const initialFilter = 'SHOW_ALL'
+  
   const [filter, setFilter] = useReducer (
       visibilityFilter,
       initialFilter
+  )
+
+  const [todos, dispatch] = useReducer (
+    todo,
+    initialState
   )
 
   /* HEADER ACTIONS */
@@ -54,8 +55,14 @@ const App = () => {
   return (
     <div class='App'>
       <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
-      <MainSection list={todos} filter={filter} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo}/>
+
+      <MainSection list={todos} 
+                   filter={filter} 
+                   onToggleTodo={toggleTodo} 
+                   onDeleteTodo={deleteTodo}/>
+
       <Footer count={incompletedTodos.length} 
+              filter={filter}
               onClearCompleted={clearCompleted} 
               onFilter={setVisibilityFilter}/>
     </div>
