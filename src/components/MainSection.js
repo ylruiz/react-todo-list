@@ -26,7 +26,7 @@ const MainSection = (props) => {
     const list = getVisibleFilter(props.list, props.filter)
 
     return (
-        <section class='main-section'>
+        <section className='main-section'>
             <ul className='todos'>
                 {list.map(item => (
                     <li key={item.id}>
@@ -39,7 +39,7 @@ const MainSection = (props) => {
                                     checked={item.done}
                                     onChange={ () => toggleTodo(item) } />
                                 <span className="checkmark"></span>      
-                                <label for={'toggle' + item.id} className='label-desc'>
+                                <label htmlFor={'toggle' + item.id} className='label-desc'>
                                     {item.description}
                                 </label>
                             </label> 

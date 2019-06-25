@@ -13,9 +13,9 @@ const Header = (props) => {
     const toggleTodos = () => props.onToggleTodos()
 
     const toggleTodosLabel = (props.total <= 0) ? 'label' :
-                             (props.count === 0) ? 'label toggleSelected' : 
-                             'label toggleUnselected'
-
+                             (props.count === 0) ? 'label toggle-selected' : 
+                             'label toggle-unselected'
+        
     return(
         <header className='header'>
             <h1> Todo List </h1>
@@ -25,7 +25,7 @@ const Header = (props) => {
                     className='toggle-todos'
                     type="checkbox"
                     onChange={ () => toggleTodos() } />
-                <label for='toggle-todos' className={toggleTodosLabel}></label>
+                <label htmlFor='toggle-todos' className={toggleTodosLabel}></label>
                 <form onSubmit={handleSubmit}>
                     <input
                         className='new-todo'

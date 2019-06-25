@@ -53,7 +53,7 @@ const App = () => {
   }
 
   return (
-    <div class='App'>
+    <div className='App'>
       <Header total={todos.length}
               count={incompletedTodos.length}
               onAddTodo={addTodo} 
@@ -64,7 +64,8 @@ const App = () => {
                    onToggleTodo={toggleTodo} 
                    onDeleteTodo={deleteTodo}/>
 
-      <Footer count={incompletedTodos.length} 
+      <Footer total={todos.length}
+              count={incompletedTodos.length} 
               filter={filter}
               onClearCompleted={clearCompleted} 
               onFilter={setVisibilityFilter}/>

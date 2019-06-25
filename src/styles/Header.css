@@ -51,18 +51,18 @@
     top: 10px;
 }
 
-.toggleUnselected::before, 
-.toggleSelected::before {
+.toggle-unselected::before, 
+.toggle-selected::before {
     content: '❯';
     font-size: 24px;
     color: #e6e6e6;
     padding: 10px 27px 10px 27px;
 }
 
-.toggleUnselected {
+.toggle-unselected {
     color: #e6e6e6;
 }
 
-.toggleSelected::before {
+.toggle-selected::before {
     color: #737373;
 }

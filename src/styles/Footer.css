@@ -43,13 +43,28 @@
     display: flex;
 }
   
-.clear-completed {
+.footer .clear-completed {
     border: none;
     background: none;
     float: right;
     position: relative;
     text-decoration: none;
     margin: 0;
-    padding-top: 1px;
+    padding-top: 0.5px;
     padding-right: 0;
+    line-height: 20px;
+    font-size: 14px;
 }
+
+.footer .show {
+    visibility: visible;
+}
+
+.footer .hidden {
+    visibility: hidden;
+}
+
+.footer .mouse-over {
+    text-decoration: underline;
+}
+
