@@ -54,7 +54,10 @@ const App = () => {
 
   return (
     <div class='App'>
-      <Header onAddTodo={addTodo} onToggleTodos={toggleTodos}/>
+      <Header total={todos.length}
+              count={incompletedTodos.length}
+              onAddTodo={addTodo} 
+              onToggleTodos={toggleTodos}/>
 
       <MainSection list={todos} 
                    filter={filter} 
