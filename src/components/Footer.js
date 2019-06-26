@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/Footer.css'
 
 const Footer = (props) => {
-
-    const [mouseState, setMouseState] = useState(false)
 
     const count = props.count
 
@@ -17,16 +15,10 @@ const Footer = (props) => {
 
     const showClearCompleted = ((props.total=== 0 || props.total-count===0) ? 
                                'button clear-completed hidden' : 
-                               'button clear-completed show')
-    
-    const onMouse = () => {
-        setMouseState(!mouseState)
-    }                     
+                               'button clear-completed show')              
 
     return (
         <footer className='footer'>
-            {showClearCompleted} 
-            {` ${mouseState}`}
             <span className='todo-count'>
                 <strong> {count} </strong>
                 <span>item</span>
@@ -44,9 +36,7 @@ const Footer = (props) => {
                 </li>
             </ul> 
             <button className={showClearCompleted} 
-                    onClick={ () => clearCompleted()}
-                    onMouseOut={() => onMouse()} 
-                    onMouseOver={() => onMouse()}> 
+                    onClick={ () => clearCompleted()}> 
                 Clear completed 
             </button>      
         </footer>

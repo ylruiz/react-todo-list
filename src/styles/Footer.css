@@ -56,15 +56,15 @@
     font-size: 14px;
 }
 
+.footer .clear-completed:hover {
+    text-decoration: underline;
+}
+
 .footer .show {
     visibility: visible;
 }
 
 .footer .hidden {
     visibility: hidden;
-}
-
-.footer .mouse-over {
-    text-decoration: underline;
 }
 
