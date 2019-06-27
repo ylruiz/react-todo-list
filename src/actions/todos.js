@@ -22,6 +22,12 @@ export const clearCompleted = () => ({
     type: types.CLEAR_COMPLETED 
 })
 
+export const editTodo = (id, text) => ({ 
+    type: types.EDIT_TODO, 
+    id,
+    text
+})
+
 /* Visibility Filters */ 
 
 export const setVisibilityFilter = filter => ({

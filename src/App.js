@@ -41,6 +41,10 @@ const App = () => {
     dispatch(actions.deleteTodo(todo.id))
   }
 
+  const editTodo = (todo, text) => {
+    dispatch(actions.editTodo(todo.id, text))
+  }
+
   /* FOOTER ACTIONS */
   const incompletedTodos = todos.filter(todo => !todo.done)
 
@@ -62,7 +66,8 @@ const App = () => {
       <MainSection list={todos} 
                    filter={filter} 
                    onToggleTodo={toggleTodo} 
-                   onDeleteTodo={deleteTodo}/>
+                   onDeleteTodo={deleteTodo}
+                   onEditTodo={editTodo}/>
 
       <Footer total={todos.length}
               count={incompletedTodos.length} 

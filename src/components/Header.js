@@ -26,7 +26,7 @@ const Header = (props) => {
                     type="checkbox"
                     onChange={ () => toggleTodos() } />
                 <label htmlFor='toggle-todos' className={toggleTodosLabel}></label>
-                <form onSubmit={handleSubmit}>
+                <form className='header-form' onSubmit={handleSubmit}>
                     <input
                         className='new-todo'
                         placeholder="What needs to be done?" 

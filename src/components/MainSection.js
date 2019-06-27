@@ -1,12 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/MainSection.css'
 
 const MainSection = (props) => {
+
+    let input
+
+    const [edit, setEdit] = useState('edit hidden')
 
     const toggleTodo = item => props.onToggleTodo(item)
 
     const deleteTodo = item => props.onDeleteTodo(item)
 
+    const handleChangeEdit = () => (edit === 'edit hidden') ? 
+                               setEdit('edit show') : 
+                               setEdit('edit hidden') 
+
+    const editTodo = (item) => {
+        props.onEditTodo(item, input.value)
+        handleChangeEdit()
+    }
+                        
     const getVisibleFilter = (todos, filter) => {
         switch (filter) {
             case 'SHOW_ALL':
@@ -37,14 +50,23 @@ const MainSection = (props) => {
                                     className='toggle'
                                     type="checkbox"
                                     checked={item.done}
-                                    onChange={ () => toggleTodo(item) } />
+                                    onChange={ () => toggleTodo(item) }/>
                                 <span className="checkmark"></span>      
-                                <label htmlFor={'toggle' + item.id} className='label-desc'>
+                                <label className='label-desc' 
+                                       onDoubleClick={handleChangeEdit}>
                                     {item.description}
                                 </label>
                             </label> 
-                            <button className='delete' onClick={ () => deleteTodo(item) }> X </button>
+                            <button className='delete' onClick={ () => deleteTodo(item)}> 
+                                X
+                            </button>        
                         </div>
+                        <input
+                            className={edit}
+                            type='text' 
+                            defaultValue = {item.description}
+                            ref={node => input = node}
+                            onBlur={() => editTodo(item)}/>
                      </li>                 
                 ))}
             </ul>

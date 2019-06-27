@@ -3,7 +3,8 @@ import {
     TOGGLE_TODO,
     DELETE_TODO,
     TOGGLE_TODOS,
-    CLEAR_COMPLETED
+    CLEAR_COMPLETED,
+    EDIT_TODO
 } from '../constants/actionTypes'
 
 let newId = 0
@@ -41,6 +42,16 @@ const todo = (state, action) => {
 
         case CLEAR_COMPLETED:
             return state.filter(todo => todo.done === false)    
+
+        case EDIT_TODO:
+            console.log(action.type)
+            console.log(action.id)
+            console.log(action.text)
+            return state.map(todo =>
+                todo.id === action.id ? 
+                { ...todo, description: action.text } :
+                todo
+            )   
             
         default:
             return state
