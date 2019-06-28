@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/TodoItem.css";
 
 const TodoItem = props => {
   let input;
