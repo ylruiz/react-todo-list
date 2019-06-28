@@ -1,0 +1,13 @@
+.main-section {
+  border-top: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+
+.todos {
+  font-size: 24px;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
